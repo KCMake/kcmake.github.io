@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kenney Chen | ePortfolio</title>
+<meta name="description" content="Kenney Chen is a Georgia Tech Computer Engineering student building software, embedded systems and communities. Projects, resume, and career goals.">
+<style>
+:root{
+  --bg:#faf8f3; --surface:#ffffff; --ink:#1b2430; --muted:#57606d;
+  --navy:#003057; --gold:#b3a369; --line:#e4dfd2; --accent:#0a4a85; --chip:#eef2f7;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#0f1620; --surface:#18222f; --ink:#e8ecf1; --muted:#a3adba; --navy:#0b2a47; --gold:#d6c78a; --line:#2a3646; --accent:#8fc0f0; --chip:#223044;}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--accent)}
+h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:clamp(1.7rem,4vw,2.2rem);color:var(--ink)}
+h3{font-size:1.3rem}
+h4{margin:1.4em 0 .3em;font-size:1.05rem;letter-spacing:.02em}
+p{margin:0 0 1em}
+ul{margin:0 0 1em;padding-left:1.2em}
+li{margin-bottom:.35em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+section{padding:64px 0;border-top:1px solid var(--line);scroll-margin-top:56px}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:100}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:3px solid var(--gold)}
+nav .wrap{display:flex;align-items:center;gap:20px;min-height:52px}
+nav .brand{color:#fff;font-weight:700;text-decoration:none;white-space:nowrap;font-family:Georgia,serif}
+nav ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+nav ul::-webkit-scrollbar{display:none}
+nav li{margin:0}
+nav a.link{display:block;color:#dfe7f0;text-decoration:none;padding:14px 10px;font-size:.93rem;white-space:nowrap}
+nav a.link:hover,nav a.link:focus{color:#fff;background:rgba(255,255,255,.1)}
+
+/* hero */
+.hero{background:linear-gradient(135deg,var(--navy),#0b4474);color:#fff;padding:84px 0 72px;border:0}
+.hero .kicker{color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-size:.8rem;font-weight:700;margin-bottom:12px}
+.hero h1{font-size:clamp(2.4rem,7vw,4rem);margin-bottom:.3em;color:#fff}
+.hero p.lead{font-size:1.2rem;max-width:44em;color:#e6edf5}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600;border:2px solid var(--gold);color:#fff}
+.btn.primary{background:var(--gold);color:#13202e}
+.btn:hover,.btn:focus{filter:brightness(1.1)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:40px}
+.stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:14px 16px}
+.stat b{display:block;font-size:1.6rem;color:var(--gold);font-family:Georgia,serif}
+.stat span{font-size:.88rem;color:#dbe5ef}
+
+/* generic */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:0 0 1em}
+.chips li{background:var(--chip);border-radius:999px;padding:4px 12px;font-size:.9rem;margin:0}
+figure{margin:0 0 1.2em}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+figure img{border-radius:10px;border:1px solid var(--line)}
+.meta{color:var(--muted);font-size:.95rem}
+.tag{display:inline-block;background:var(--gold);color:#13202e;font-size:.75rem;font-weight:700;border-radius:4px;padding:2px 8px;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle;margin-left:8px}
+
+/* timeline */
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{border-left:3px solid var(--gold);padding:0 0 22px 20px;margin:0;position:relative}
+.timeline li::before{content:"";position:absolute;left:-9px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--navy);border:3px solid var(--gold)}
+.timeline h3{font-size:1.1rem;margin-bottom:.1em}
+.timeline ul li{border:0;padding:0 0 6px 0;position:static}
+.timeline ul li::before{display:none}
+
+/* steps */
+.steps{counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px 16px 64px;position:relative;margin-bottom:14px}
+.steps li::before{content:counter(s);position:absolute;left:18px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700}
+
+/* project */
+.project{margin-bottom:56px}
+.project:last-child{margin-bottom:0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin:18px 0}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.gallery img.contain{object-fit:contain;background:var(--surface)}
+.phone{max-width:260px;margin:0 auto}
+.headshot{max-width:240px;margin:0 0 20px}
+.headshot img{width:100%;height:auto;border-radius:12px;background:#fff}
+.placeholder{border:2px dashed var(--gold);border-radius:12px;padding:22px 24px;background:var(--surface)}
+.resume-frame{width:100%;height:760px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.contact-list{list-style:none;padding:0}
+.contact-list li{margin-bottom:.7em}
+footer{background:var(--navy);color:#cfd9e4;padding:28px 0;font-size:.9rem;border-top:3px solid var(--gold)}
+footer a{color:var(--gold)}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .two{grid-template-columns:1fr;gap:20px}
+  section{padding:48px 0}
+  .hero{padding:56px 0 48px}
+  .resume-frame{display:none}
+  nav .brand{display:none}
+}
+@media print{nav,.btns{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main navigation">
+  <div class="wrap">
+    <a class="brand" href="#home">Kenney Chen</a>
+    <ul>
+      <li><a class="link" href="#about">About</a></li>
+      <li><a class="link" href="#resume">Resume</a></li>
+      <li><a class="link" href="#goals">Career Goals</a></li>
+      <li><a class="link" href="#projects">Projects</a></li>
+      <li><a class="link" href="#experience">Experience</a></li>
+      <li><a class="link" href="#leadership">Leadership</a></li>
+      <li><a class="link" href="#skills">Skills</a></li>
+      <li><a class="link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- WELCOME -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="kicker">Georgia Tech &middot; Computer Engineering &middot; Class of 2029</div>
+    <h1>Hi, I'm Kenney Chen.</h1>
+    <p class="lead">I build software, embedded systems, and communities. I'm a first-generation college student at Georgia Tech who likes projects where code meets the real world, from a TinyML fertilizer controller to a map of free parking in Atlanta. I'm looking for a software engineering internship for Summer 2027.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="assets/Kenney_Chen_Resume.pdf" download>Download resume</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    <div class="stats" aria-label="Highlights">
+      <div class="stat"><b>4.00</b><span>Georgia Tech GPA</span></div>
+      <div class="stat"><b>5,000+</b><span>members in the STEM community I founded</span></div>
+      <div class="stat"><b>28%</b><span>less water used by AgriNexus in trials</span></div>
+      <div class="stat"><b>2,035</b><span>city blocks classified in Free Curb ATL</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>About Me</h2>
+    <div class="two">
+      <div>
+        <p>I grew up in Cumming, Georgia, and my first real job was at my family's restaurant, Hong Kong City. Since 2016 I have worked there as a cook, cashier, and shift manager. On a busy night that meant running the point-of-sale system for about 200 guests and keeping a kitchen moving. It taught me how a system behaves under pressure, and it is why I like building tools that have to work when people are actually using them. When delivery apps took off after COVID, I set up our UberEats and DoorDash integration, and delivery orders grew 60% year over year.</p>
+        <p>That same habit of fixing what slows people down led me to software. In high school I founded BuildForge, a Discord community for student engineers and roboticists that grew to more than 5,000 members across ten time zones. We ran two virtual hackathons, started a free weekly mentorship team, and shared over 250 member projects. I also led the CAD and programming side of my VEX Robotics team and, with a team, built AgriNexus, an engineering project that placed in the top five in Georgia at the TSA state conference and advanced to nationals.</p>
+        <p>Last year I used those skills professionally. As an AI Solutions Architect at Osho Sushi &amp; Hibachi in Atlanta, I built and ran an AI voice-ordering system that takes inbound phone orders end to end, on FastAPI, PostgreSQL, and Redis. This fall I started Cogni, an open-source memory engine that gives AI agents long-term memory, with a co-founder.</p>
+        <p>I am the first person in my family to go to college. That shapes how I work: I do not assume anyone will hand me an opportunity, so I build my own and try to open doors for other students while I am at it.</p>
+      </div>
+      <div>
+        <figure class="headshot">
+          <img src="assets/kenney-headshot.jpg" alt="Professional headshot of Kenney Chen in a dark suit and navy tie" width="320" height="320">
+        </figure>
+        <div class="card">
+          <h3>Quick facts</h3>
+          <ul>
+            <li><b>School:</b> Georgia Institute of Technology, B.S. Computer Engineering (expected May 2029)</li>
+            <li><b>Focus:</b> Backend and distributed systems, AI, embedded software</li>
+            <li><b>Languages:</b> English (fluent), Chinese (conversational)</li>
+            <li><b>Outside class:</b> basketball, running, working out, and studying in cafes and libraries</li>
+            <li><b>Based in:</b> Atlanta, Georgia</li>
+          </ul>
+        </div>
+        <p></p>
+        <figure>
+          <img src="assets/agrinexus-prototype.jpg" alt="The AgriNexus prototype on a workbench with a plant tray, wiring, and sensors" loading="lazy">
+          <figcaption>My happy place: a table full of wires, a plant tray, and a problem to solve. This is the AgriNexus prototype. Photo by Kenney Chen.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume">
+  <div class="wrap">
+    <h2>Resume</h2>
+    <p>My one-page resume is below. You can view it here or download the PDF.</p>
+    <div class="btns" style="margin:0 0 20px">
+      <a class="btn primary" style="color:#13202e" href="assets/Kenney_Chen_Resume.pdf" download>Download PDF</a>
+      <a class="btn" style="color:var(--accent);border-color:var(--accent)" href="assets/Kenney_Chen_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+    <iframe class="resume-frame" src="assets/Kenney_Chen_Resume.pdf" title="Kenney Chen's resume (PDF)"></iframe>
+  </div>
+</section>
+
+<!-- CAREER GOALS -->
+<section id="goals">
+  <div class="wrap">
+    <h2>Career Goals</h2>
+    <p><b>Where I want to end up:</b> building AI and software products that people rely on, first as an engineer on a strong team and later as a founder. I am drawn to backend systems, distributed software, and AI infrastructure, the unglamorous layers that decide whether a product actually works. I chose Computer Engineering over a pure software degree because I want to understand the whole stack, from the hardware that runs the code to the services built on top of it.</p>
+    <p><b>How I plan to get there:</b></p>
+    <ol class="steps">
+      <li><b>Build the foundation (2026 to 2027).</b> Complete the core sequence in programming and digital design: CS 1331, CS 1332, ECE 2020, and ECE 2035. Keep my GPA strong enough to renew the Zell Miller Scholarship and stay eligible for competitive programs.</li>
+      <li><b>Specialize in software systems.</b> My CmpE threads are Distributed Systems &amp; Software Design and Systems &amp; Architecture, which put backend, operating systems, and networking depth at the center of my degree rather than spreading me thin.</li>
+      <li><b>Get real engineering experience.</b> Land a software engineering internship for Summer 2027 through the ECE Career Fair and my network, and a second one in Summer 2028. I am also applying to a Vertically Integrated Projects (VIP) team for undergraduate research in algorithm design.</li>
+      <li><b>Keep shipping my own work.</b> Continue building Cogni and projects like Free Curb ATL so that my portfolio shows finished, tested, deployed software and not only coursework.</li>
+      <li><b>Decide on depth after 2029.</b> I will graduate in May 2029 and am weighing a Georgia Tech BS/MS path against going straight into industry or a startup. Programs like CREATE-X can help me test the entrepreneurial route while I am still a student.</li>
+    </ol>
+    <p class="meta">Skills I know I need to grow: large-scale system design, working in a codebase with many engineers, and writing production-quality tests and documentation. My projects and internships are how I plan to close those gaps.</p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Technical Projects</h2>
+    <p>These are the projects I'm proudest of. I will keep adding to this section as I build more at Georgia Tech.</p>
+
+    <!-- DISCOVERY -->
+    <article class="project" id="discovery">
+      <h3>ECE 1100 Discovery Project <span class="tag">In progress</span></h3>
+      <div class="placeholder">
+        <p><b>Discovery Project Feature coming soon.</b> I am still building my individual Discovery Project for ECE 1100. The full feature will be published here before the Discovery Project Showcase and will follow the structure below.</p>
+        <ul>
+          <li><b>The Problem:</b> what I set out to solve and why it matters.</li>
+          <li><b>The Process:</b> how I designed, built, and tested it, including what failed.</li>
+          <li><b>The Outcome:</b> results, photos and video of the project, and what I learned.</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- FREE CURB -->
+    <article class="project" id="freecurb">
+      <h3>Free Curb ATL: a map of free street parking</h3>
+      <p class="meta">Python &middot; JavaScript &middot; Leaflet &middot; GitHub Actions &middot; 2026</p>
+      <div class="chips" style="margin-bottom:14px">
+        <a class="btn" style="color:var(--accent);border-color:var(--accent);padding:8px 14px" href="https://kcmake.github.io/atl-free-parking/" target="_blank" rel="noopener">Open the live map</a>
+        <a class="btn" style="color:var(--accent);border-color:var(--accent);padding:8px 14px" href="https://github.com/KCMake/atl-free-parking" target="_blank" rel="noopener">View the code</a>
+      </div>
+      <figure>
+        <img src="assets/freecurb-desktop.jpg" alt="Free Curb ATL map showing color-coded curbs around Midtown and Georgia Tech, with the six nearest free blocks to Tech Square numbered" loading="lazy">
+        <figcaption>The map on a Tuesday at 2 PM, with the six nearest free blocks to Tech Square numbered. Screenshot by Kenney Chen. Streets: City of Atlanta GIS. Parks: &copy; OpenStreetMap contributors.</figcaption>
+      </figure>
+      <div class="two">
+        <div>
+          <h4>The Problem</h4>
+          <p>Finding free street parking around Georgia Tech and Midtown is mostly guesswork. Many nearby streets are free, but Atlanta does not publish where its parking meters are, so there is nothing to look up. The quick fix of "every street minus the paid ones" is wrong: it marks interstates, park drives, and permit-only streets as free.</p>
+          <h4>The Process</h4>
+          <p>I started from the city's own street centerlines and classified each of 2,035 blocks by the strongest evidence available. Hard exclusions come first, so no rule can make a highway free. Next come 63 on-street listings that I checked by hand, then district-level rules for meter zones, permit neighborhoods, and campus. When the evidence is thin, a block is marked "check the signs" instead of free.</p>
+          <p>The page also knows the meter clock. City meters run Monday to Saturday, 7 AM to 10 PM, and are off on Sundays and nine holidays, so you can pick any day and time and see which curbs are free right then. Pick a destination, such as Tech Square, and it lists the six closest free blocks with walking times and directions.</p>
+        </div>
+        <div>
+          <h4>What went wrong, and how I fixed it</h4>
+          <ul>
+            <li>The city's server silently dropped street segments (993 of 1,762 came back). I rewrote the fetcher to page by object ID and fail loudly if the counts do not match.</li>
+            <li>Parkopedia files free listings under a "meter" web address, so reading the address as proof of a meter marked eight free blocks as paid. I now record each listing's real rule and pinned a test to it.</li>
+            <li>Some address ranges only covered one side of a street, so I match listings to the nearest range within 40 house numbers. 62 of 63 now match.</li>
+          </ul>
+          <h4>The Outcome</h4>
+          <p>The result is a single static HTML page with no server, API keys, or tracking that colors 285 km of curb, works on phones, and supports light and dark mode. Every block's popup shows its source and whether the rule was confirmed or inferred. Python and JavaScript test suites run in continuous integration on every push, and the map deploys to GitHub Pages automatically. I was careful to be honest about confidence: of 56.5 km marked paid, only 4.1 km is confirmed block by block, and the map says so.</p>
+        </div>
+      </div>
+      <figure class="phone">
+        <img src="assets/freecurb-mobile.jpg" alt="Free Curb ATL on a phone in dark mode, showing the map on a Tuesday at 8 PM" loading="lazy">
+        <figcaption>The same map on a phone in dark mode.</figcaption>
+      </figure>
+    </article>
+
+    <!-- AGRINEXUS -->
+    <article class="project" id="agrinexus">
+      <h3>AgriNexus 2.0: a smart nitrogen management system</h3>
+      <p class="meta">Team Lead &middot; ESP32-S3 &middot; TinyML &middot; Python &middot; TSA Engineering Design, 2025 (top five in Georgia; national conference in Nashville)</p>
+      <figure>
+        <img src="assets/agrinexus-final-build.jpg" alt="The finished AgriNexus 2.0 unit with a tray of lettuce, two nutrient cups, a color display, and an electronics crate" loading="lazy" style="max-height:620px;margin:0 auto">
+        <figcaption>AgriNexus 2.0 with a live lettuce tray, dual nutrient cups, and the TFT dashboard. Photo by the AgriNexus team.</figcaption>
+      </figure>
+      <div class="two">
+        <div>
+          <h4>The Problem</h4>
+          <p>Farmers lose a lot of the nitrogen they apply: global use efficiency is only about 55%, so roughly 45% leaches into waterways or escapes as gas. That wastes money and feeds problems like algal blooms and dead zones. Existing fixes were either too large, like industrial ammonia production, or too manual for small growers.</p>
+          <h4>The Process</h4>
+          <p>Our team first explored three ideas: a sensor grid, an aquaponics loop, and a small-scale Haber-Bosch reactor, which we modeled in CAD. We dropped the reactor because it needs too much energy and infrastructure for local farms, and moved to a sensor-guided tray. AgriNexus 2.0 uses an ESP32-S3, a capacitive moisture probe, a BME280 climate sensor, and MOSFET-driven micro-pumps, all running on three AA batteries.</p>
+          <p>The key software step was replacing a fixed moisture threshold with a small machine-learning model. I helped train a linear regression in Python on logged tray data and exported its weights to a C++ header, so the ESP32 predicts moisture ten minutes ahead and waters before the soil dries out.</p>
+        </div>
+        <div>
+          <h4>What went wrong, and how we fixed it</h4>
+          <ul>
+            <li>Our 3D-printed wedge warped in mild heat and tilted the tray, so we replaced it with hardwood shims and moved large parts to wood.</li>
+            <li>Tubing leaked in a 12-hour soak test, so we added silicone grommets and zip ties.</li>
+            <li>The touchscreen froze whenever pumps and sensors ran together, so we moved the display into its own FreeRTOS task.</li>
+            <li>A Python model file could not run on the microcontroller, so we extracted the weights by hand into a header file.</li>
+          </ul>
+          <h4>The Outcome</h4>
+          <p>In a three-week test against a control tray, AgriNexus plants grew about 2 cm taller while using about 28% less water and 18% less fertilizer. The prediction logic cut redundant watering by 40% in cool-room tests. A companion web app shows live readings, history, and alerts.</p>
+        </div>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/agrinexus-growth-chart.jpg" class="contain" alt="Chart comparing average plant height over 21 days for the AgriNexus tray and a control tray" loading="lazy"><figcaption>Three-week growth trial: AgriNexus vs. control.</figcaption></figure>
+        <figure><img src="assets/agrinexus-app-dashboard.jpg" class="contain" alt="AgriNexus companion app dashboard showing soil moisture, temperature, humidity, and soil health" loading="lazy"><figcaption>Companion app dashboard.</figcaption></figure>
+        <figure><img src="assets/agrinexus-electronics.jpg" alt="ESP32, MOSFET driver boards, pumps, and sensors wired together on a table" loading="lazy"><figcaption>Electronics before the wiring cleanup.</figcaption></figure>
+        <figure><img src="assets/agrinexus-warped-print.jpg" alt="A black 3D-printed wedge that bowed after heat exposure" loading="lazy"><figcaption>The warped print that sent us to wood.</figcaption></figure>
+      </div>
+    </article>
+
+    <!-- MORE PROJECTS -->
+    <article class="project" id="more-projects">
+      <h3>More projects</h3>
+      <div class="two">
+        <div class="card">
+          <h4 style="margin-top:0">ITrade: auditable AI trading agents <span class="tag">In progress</span></h4>
+          <p class="meta">Python &middot; Docker &middot; Model Context Protocol &middot; OAuth 2.0 &middot; Linux</p>
+          <p>An open-source framework for letting AI agents trade without losing track of what they did. The idea is that an autonomous agent with access to money should leave a record of every action and stay inside hard limits.</p>
+          <ul>
+            <li>Brokerage integration over the Model Context Protocol, using OAuth 2.0 credential flows.</li>
+            <li>Per-action logging and rate limits, so every decision can be audited later.</li>
+            <li>Agents run in an isolated Docker sandbox on a cloud Linux VM, which contains anything an autonomous run does wrong.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0">Portify: a newsletter opportunity scanner</h4>
+          <p class="meta">Google Apps Script &middot; JavaScript &middot; email parsing &middot; Google Sheets</p>
+          <p>Georgia Tech sends a near-daily newsletter full of scholarships, internships, and research postings, and it is easy to miss the good ones. Portify reads it for me and logs each opportunity to a structured Google Sheet.</p>
+          <ul>
+            <li>Wrote extraction logic that pulls titles, deadlines, and links out of inconsistent HTML email markup.</li>
+            <li>The mail server blocked external forwarding, so I worked around it by triggering on messages filed into a folder instead.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <ul class="timeline">
+      <li>
+        <h3>Co-Founder, Cogni</h3>
+        <div class="meta">October 2026 to present &middot; San Francisco Bay Area</div>
+        <p>Building an open-source memory engine that gives AI agents long-term memory modeled on human cognition.</p>
+      </li>
+      <li>
+        <h3>AI Solutions Architect, Osho Sushi &amp; Hibachi</h3>
+        <div class="meta">December 2025 to May 2026 &middot; Atlanta, GA</div>
+        <ul>
+          <li>Built and deployed an AI voice-ordering system that handled inbound phone orders end to end for a live restaurant.</li>
+          <li>Designed a multi-agent orchestration layer that turned free-form speech into structured, validated order objects.</li>
+          <li>Engineered the Python and FastAPI backend, with PostgreSQL for order persistence and Redis for session state.</li>
+          <li>Owned the system in production, including error handling, latency tuning, and iteration on live calls.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Shift Manager, Cook, and Cashier, Hong Kong City</h3>
+        <div class="meta">2016 to present &middot; Atlanta, GA</div>
+        <ul>
+          <li>Managed point-of-sale operations and service flow for shifts averaging 200 guests.</li>
+          <li>Led the UberEats and DoorDash integration, driving a 60% year-over-year increase in delivery orders after COVID.</li>
+          <li>Train and coordinate staff across front-of-house and kitchen during peak service.</li>
+        </ul>
+      </li>
+      <li>
+        <h3>Founder and Director, BuildForge</h3>
+        <div class="meta">August 2023 to present &middot; Remote</div>
+        <p>Founded and lead a 5,000+ member international STEM and robotics Discord community, with two virtual hackathons, a ten-student weekly mentorship program, and 250+ shared member projects.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <div class="wrap">
+    <h2>Leadership, Service, and Achievements</h2>
+    <div class="two">
+      <div>
+        <h3>Leadership and service</h3>
+        <ul>
+          <li><b>Head Basketball Coach, Atlanta Contemporary Basketball Association (Dec 2023 to May 2026).</b> Coached 50+ youth players, led a 5th-grade team to consecutive championships, and ran summer clinics.</li>
+          <li><b>Coordinator, Passion Exploration Project Georgia (Aug 2023 to Jul 2026).</b> Directed 20 volunteers, launched tutoring for 60+ students, and helped raise over $3,000, serving 800+ people across Metro Atlanta.</li>
+          <li><b>CAD and Programming Lead, VEX Robotics Team 1961Z (Aug 2024 to May 2026).</b> Helped a 9-member team become a state qualifier and quarterfinalist.</li>
+          <li><b>Treasurer and Outreach Lead, South Forsyth TSA.</b> Managed a budget of over $1,500 for 250+ students and recruited 70+ freshmen.</li>
+          <li><b>Mentor, FIRST LEGO League.</b> Coach my brother's 10-member robotics team from a workshop we built in our basement.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Honors and awards</h3>
+        <ul>
+          <li>TSA Engineering Design: Top 5 in Georgia and national finalist</li>
+          <li>TSA Achievement Awards: Bronze, Silver, and Gold (one of 13 of 19,773 Georgia students to earn all three)</li>
+          <li>Open Santander Scholarship ($20K, one of 36 selected nationally)</li>
+          <li>Zell Miller Scholarship</li>
+          <li>Presidential Volunteer Service Award, Bronze and Gold (350+ hours)</li>
+          <li>2x AP Scholar with Distinction</li>
+          <li>University of Georgia Certificate of Merit (top 10% of Georgia juniors)</li>
+          <li>First-Generation Recognition Award</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills and Coursework</h2>
+    <div class="two">
+      <div>
+        <h4 style="margin-top:0">Programming and tools</h4>
+        <ul class="chips"><li>Python</li><li>Java</li><li>C / C++</li><li>JavaScript</li><li>SQL (PostgreSQL)</li><li>Bash</li><li>FastAPI</li><li>REST APIs</li><li>Redis</li><li>Docker</li><li>Linux</li><li>Git and GitHub</li><li>CI/CD (GitHub Actions)</li><li>Google Apps Script</li><li>Model Context Protocol (MCP)</li><li>LLM and agent orchestration</li></ul>
+        <h4>Hardware and engineering</h4>
+        <ul class="chips"><li>ESP32-S3 and Arduino</li><li>Firmware</li><li>I&sup2;C / SPI sensors</li><li>MOSFET driver circuits</li><li>TinyML</li><li>CAD (Onshape)</li><li>3D printing</li><li>VEX robotics</li></ul>
+        <h4>People skills</h4>
+        <ul class="chips"><li>Team leadership</li><li>Mentorship</li><li>Technical writing</li><li>Public presenting</li></ul>
+      </div>
+      <div>
+        <h4 style="margin-top:0">Relevant coursework</h4>
+        <ul>
+          <li>Introduction to Computing</li>
+          <li>Linear Algebra</li>
+          <li>Multivariable Calculus and Calculus I to III</li>
+          <li>Physics I and II (Mechanics, Electricity and Magnetism)</li>
+          <li>In progress at Georgia Tech: CS 1331, ECE 2020, MATH 2552, ECE 1100</li>
+        </ul>
+        <h4>Languages</h4>
+        <p>English (fluent) and Chinese (conversational).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>I'm looking for a Summer 2027 software engineering internship, and I'm always glad to talk about projects, startups, or mentoring. The best way to reach me is email.</p>
+    <ul class="contact-list">
+      <li><b>Email:</b> <a href="mailto:kchen755@gatech.edu">kchen755@gatech.edu</a></li>
+      <li><b>LinkedIn:</b> <a href="https://www.linkedin.com/in/kenneychen" target="_blank" rel="noopener">linkedin.com/in/kenneychen</a></li>
+      <li><b>GitHub:</b> <a href="https://github.com/KCMake" target="_blank" rel="noopener">github.com/KCMake</a></li>
+      <li><b>Location:</b> Atlanta, Georgia</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Kenney Chen &middot; ECE 1100 ePortfolio, Georgia Institute of Technology &middot; <a href="#home">Back to top</a>
+  </div>
+</footer>
+</body>
+</html>
